@@ -10,9 +10,11 @@ router.get('/admited-student', async (req, res) => {
 
     if (!All_AdmitedStudents) {
         res.status(200).send({ Message: 'No Student are Admited' })
-    } else (
+    } else if (All_AdmitedStudents.length == 0) {
+        res.status(200).send({ Message: 'No Data' })
+    } else {
         res.status(200).send({ message: 'All Admited Data is Loaded Succesfully', All_AdmitedStudents })
-    )
+    }
 })
 
 router.get('/admited-student/:id', async (req, res) => {
@@ -76,8 +78,8 @@ router.post('/new-admission', async (req, res) => {
     } else if (!Payments) {
         res.status(404).send({ Error: "You have to upload your Payments Details" })
     } else {
-        res.status(200).send({Message: `${fullnameEng} your Admission Proccess is Completed. We Will inform you the course Details Soon`})
+        res.status(200).send({ Message: `${fullnameEng} your Admission Proccess is Completed. We Will inform you the course Details Soon` })
     }
 })
 
-module.exports=router
+module.exports = router
