@@ -40,62 +40,80 @@ router.get('/admited-student/:id', async (req, res) => {
 })
 
 router.post('/new-admission', async (req, res) => {
-    const { photourl, coursname, fullnameEng, fullnameBan,
-        studentMobile, email,
-        gender, bloodGroup, nid, guardianName, guardianRelation, guardianPhone, FathersName, MothersName, Address, Payments
-    } = req.body
+    const {
+            PhotoUrl,
+            CoursName,
+            CourseType,
+            EnglishName,
+            BanglaName,
+            StudPhone,
+            Email,
+            Gender,
+            BloodGroup,
+            NID,
+            GurdName,
+            GurdRelation,
+            GurdPhone,
+            FatherName,
+            MotherName,
+            FullAddress,
+            PaymentDetails
+        } = req.body
 
-    if (!photourl) {
+    if (!PhotoUrl) {
         res.status(404).send({ Error: "You have to upload your Photo" })
-    } else if (!coursname) {
+    } else if (!CoursName) {
         res.status(404).send({ Error: "You have to upload your Course Name" })
-    } else if (!fullnameEng) {
+    } else if (!CourseType) {
+        res.status(404).send({ Error: "You have to upload your Course Type" })
+    } else if (!EnglishName) {
         res.status(404).send({ Error: "You have to upload your Fullname in English" })
-    } else if (!fullnameBan) {
+    } else if (!BanglaName) {
         res.status(404).send({ Error: "You have to upload your Fullname in Bangla" })
-    } else if (!studentMobile) {
+    } else if (!StudPhone) {
         res.status(404).send({ Error: "You have to upload your Student Mobile" })
-    } else if (!email) {
+    } else if (!Email) {
         res.status(404).send({ Error: "You have to upload your Student Email" })
-    } else if (!gender) {
+    } else if (!Gender) {
         res.status(404).send({ Error: "You have to upload your Gender" })
-    } else if (!bloodGroup) {
+    } else if (!BloodGroup) {
         res.status(404).send({ Error: "You have to upload your Blood Group" })
-    } else if (!nid) {
+    } else if (!NID) {
         res.status(404).send({ Error: "You have to upload your NID Number" })
-    } else if (!guardianName) {
+    } else if (!GurdName) {
         res.status(404).send({ Error: "You have to upload your Guardian Name" })
-    } else if (!guardianRelation) {
+    } else if (!GurdRelation) {
         res.status(404).send({ Error: "You have to upload your Relation" })
-    } else if (!guardianPhone) {
+    } else if (!GurdPhone) {
         res.status(404).send({ Error: "You have to upload your Guardian Phone" })
-    } else if (!FathersName) {
+    } else if (!FatherName) {
         res.status(404).send({ Error: "You have to upload your Fathers Name" })
-    } else if (!MothersName) {
+    } else if (!MotherName) {
         res.status(404).send({ Error: "You have to upload your Mothers name" })
-    } else if (!Address) {
+    } else if (!FullAddress) {
         res.status(404).send({ Error: "You have to upload your Address" })
-    } else if (!Payments) {
+    } else if (!PaymentDetails) {
         res.status(404).send({ Error: "You have to upload your Payments Details" })
     } else {
 
         const StudentData = new admissionSchema({
-            photourl,
-            coursname,
-            fullnameEng,
-            fullnameBan,
-            studentMobile,
-            email,
-            gender,
-            bloodGroup,
-            nid,
-            guardianName,
-            guardianRelation,
-            guardianPhone,
-            FathersName,
-            MothersName,
-            Address,
-            Payments
+            photourl:PhotoUrl,
+            coursname:CoursName,
+            courstype:CourseType,
+            fullnameEng: EnglishName,
+            fullnameBan:BanglaName,
+            studentMobile:StudPhone,
+            email:Email,
+            gender:Gender,
+            bloodGroup:BloodGroup,
+            nid:NID,
+            guardianName:GurdName,
+            guardianRelation:GurdRelation,
+            guardianPhone:GurdPhone,
+            FathersName:FatherName,
+            MothersName:MotherName,
+            Address:FullAddress,
+            Payments:PaymentDetails
         })
         await StudentData.save();
         res.status(200).send({ Message: `${fullnameEng} your Admission Proccess is Completed. We Will inform you the course Details Soon` })

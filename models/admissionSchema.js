@@ -6,6 +6,7 @@ const admissionSchema = new Schema({
     admissionDate:{ type: Date, default: Date.now },
     photourl: { type: String, required: true },
     coursname: { type: String, required: true },
+    courstype: { type: String, required: true },
     fullnameEng: { type: String, required: true },
     fullnameBan: { type: String, required: true },
     studentMobile: { type: Number, required: true },
