@@ -78,6 +78,26 @@ router.post('/new-admission', async (req, res) => {
     } else if (!Payments) {
         res.status(404).send({ Error: "You have to upload your Payments Details" })
     } else {
+
+        const StudentData = new admissionSchema({
+            photourl,
+            coursname,
+            fullnameEng,
+            fullnameBan,
+            studentMobile,
+            email,
+            gender,
+            bloodGroup,
+            nid,
+            guardianName,
+            guardianRelation,
+            guardianPhone,
+            FathersName,
+            MothersName,
+            Address,
+            Payments
+        })
+        StudentData.save()
         res.status(200).send({ Message: `${fullnameEng} your Admission Proccess is Completed. We Will inform you the course Details Soon` })
     }
 })

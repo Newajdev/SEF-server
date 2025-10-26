@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 const paymentDetails = require('./paymentSchema')
 
 const admissionSchema = new Schema({
+    admissionDate:{ type: Date, default: Date.now },
     photourl: { type: String, required: true },
     coursname: { type: String, required: true },
     fullnameEng: { type: String, required: true },
