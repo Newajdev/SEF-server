@@ -5,7 +5,7 @@ const admissionSchema = require('../models/admissionSchema')
 
 
 
-router.get('admited-Student', async (req, res) => {
+router.get('/admited-student', async (req, res) => {
     const All_AdmitedStudents = await admissionSchema.find({})
 
     if (!All_AdmitedStudents) {
@@ -15,7 +15,7 @@ router.get('admited-Student', async (req, res) => {
     )
 })
 
-router.get('admited-Student/:id', async (req, res) => {
+router.get('/admited-student/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const findStudent = req.body;
@@ -37,7 +37,7 @@ router.get('admited-Student/:id', async (req, res) => {
     }
 })
 
-router.post('new-admission', async (req, res) => {
+router.post('/new-admission', async (req, res) => {
     const { photourl, coursname, fullnameEng, fullnameBan,
         studentMobile, email,
         gender, bloodGroup, nid, guardianName, guardianRelation, guardianPhone, FathersName, MothersName, Address, Payments
