@@ -16,9 +16,9 @@ const admissionSchema = new Schema({
     guardianName: { type: String, required: true },
     guardianRelation: { type: String, required: true },
     guardianPhone: { type: Number, required: true },
-    FathersName: { type: Number, required: true },
-    MothersName: { type: Number, required: true },
-    Address: { type: Number, required: true },
+    FathersName: { type: String, required: true },
+    MothersName: { type: String, required: true },
+    Address: { type: String, required: true },
     Payments: [paymentDetails]
 });
 

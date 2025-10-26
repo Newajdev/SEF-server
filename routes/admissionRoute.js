@@ -97,7 +97,7 @@ router.post('/new-admission', async (req, res) => {
             Address,
             Payments
         })
-        StudentData.save()
+        await StudentData.save();
         res.status(200).send({ Message: `${fullnameEng} your Admission Proccess is Completed. We Will inform you the course Details Soon` })
     }
 })
