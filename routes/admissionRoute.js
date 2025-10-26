@@ -41,24 +41,24 @@ router.get('/admited-student/:id', async (req, res) => {
 
 router.post('/new-admission', async (req, res) => {
     const {
-            PhotoUrl,
-            CoursName,
-            CourseType,
-            EnglishName,
-            BanglaName,
-            StudPhone,
-            Email,
-            Gender,
-            BloodGroup,
-            NID,
-            GurdName,
-            GurdRelation,
-            GurdPhone,
-            FatherName,
-            MotherName,
-            FullAddress,
-            PaymentDetails
-        } = req.body
+        PhotoUrl,
+        CoursName,
+        CourseType,
+        EnglishName,
+        BanglaName,
+        StudPhone,
+        Email,
+        Gender,
+        BloodGroup,
+        NID,
+        GurdName,
+        GurdRelation,
+        GurdPhone,
+        FatherName,
+        MotherName,
+        FullAddress,
+        PaymentDetails
+    } = req.body
 
     if (!PhotoUrl) {
         res.status(404).send({ Error: "You have to upload your Photo" })
@@ -97,26 +97,32 @@ router.post('/new-admission', async (req, res) => {
     } else {
 
         const StudentData = new admissionSchema({
-            photourl:PhotoUrl,
-            coursname:CoursName,
-            courstype:CourseType,
+            photourl: PhotoUrl,
+            coursname: CoursName,
+            courstype: CourseType,
             fullnameEng: EnglishName,
-            fullnameBan:BanglaName,
-            studentMobile:StudPhone,
-            email:Email,
-            gender:Gender,
-            bloodGroup:BloodGroup,
-            nid:NID,
-            guardianName:GurdName,
-            guardianRelation:GurdRelation,
-            guardianPhone:GurdPhone,
-            FathersName:FatherName,
-            MothersName:MotherName,
-            Address:FullAddress,
-            Payments:PaymentDetails
+            fullnameBan: BanglaName,
+            studentMobile: StudPhone,
+            email: Email,
+            gender: Gender,
+            bloodGroup: BloodGroup,
+            nid: NID,
+            guardianName: GurdName,
+            guardianRelation: GurdRelation,
+            guardianPhone: GurdPhone,
+            FathersName: FatherName,
+            MothersName: MotherName,
+            Address: FullAddress,
+            Payments: [{
+                PaymentsBy:PaymentDetails.PaymentMethod,
+                Phone:PaymentDetails.AccountNumber,
+                Amount:PaymentDetails.Amount,
+                TransetionID:PaymentDetails.TransID,
+                reference:PaymentDetails.Referance
+            }]
         })
         await StudentData.save();
-        res.status(200).send({ Message: `${fullnameEng} your Admission Proccess is Completed. We Will inform you the course Details Soon` })
+        res.status(200).send({ Message: `${EnglishName} your Admission Proccess is Completed. We Will inform you the course Details Soon` })
     }
 })
 
